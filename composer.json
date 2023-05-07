@@ -1,5 +1,5 @@
 {
-  "name": "tastyigniter/testbench",
+  "name": "sampoyigi/testbench",
   "require": {
     "fakerphp/faker": "~1.14",
     "mockery/mockery": "^1.4.4",
