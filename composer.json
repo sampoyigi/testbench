@@ -1,17 +1,11 @@
 {
-  "name": "sampoyigi/testbench",
-  "require": {
-    "fakerphp/faker": "~1.14",
-    "mockery/mockery": "^1.4.4",
-    "orchestra/testbench": "^8.5",
-    "pestphp/pest": "^1.21",
-    "pestphp/pest-plugin-laravel": "^1.2",
-    "pestphp/pest-plugin-faker": "^1.0",
-    "tastyigniter/core": "dev-master"
-  },
-  "autoload": {
-    "psr-4": {
-      "Igniter\\Testbench\\": "src/"
-    }
-  }
+	"name": "sampoyigi/testbench",
+	"require": {
+		"orchestra/testbench": "^8.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"SamPoyigi\\Testbench\\": "src/"
+		}
+	}
 }

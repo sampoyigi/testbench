@@ -1,23 +1,12 @@
 <?php
 
-namespace Igniter\Testbench;
+namespace SamPoyigi\Testbench;
 
+use Igniter\System\Classes\ExtensionManager;
 use function Orchestra\Testbench\artisan;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
-    protected static array $packageProviders;
-
-    public static function definePackageProviders(array $providers)
-    {
-        static::$packageProviders = $providers;
-    }
-
-    public function ignorePackageDiscoveriesFrom()
-    {
-        return [];
-    }
-
     protected function defineEnvironment($app)
     {
         $app['config']->set('database.connections.mysql.strict', false);
@@ -25,7 +14,13 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function getPackageProviders($app)
     {
-        return static::$packageProviders;
+        $app->afterResolving(ExtensionManager::class, function ($manager) {
+            $manager->loadExtension(realpath($_SERVER['PWD']));
+        });
+
+        return [
+            \Igniter\Flame\ServiceProvider::class,
+        ];
     }
 
     protected function defineDatabaseMigrations()
