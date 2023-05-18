@@ -3,10 +3,13 @@
 namespace SamPoyigi\Testbench;
 
 use Igniter\System\Classes\ExtensionManager;
+use Igniter\System\Database\Seeds\DatabaseSeeder;
 use function Orchestra\Testbench\artisan;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
+    protected $enablesPackageDiscoveries = true;
+
     protected function defineEnvironment($app)
     {
         $app['config']->set('database.connections.mysql.strict', false);
@@ -25,6 +28,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function defineDatabaseMigrations()
     {
+        DatabaseSeeder::$seedDemo = true;
+
         artisan($this, 'igniter:up');
     }
 }
