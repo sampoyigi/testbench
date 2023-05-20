@@ -4,10 +4,14 @@ namespace SamPoyigi\Testbench;
 
 use Igniter\System\Classes\ExtensionManager;
 use Igniter\System\Database\Seeds\DatabaseSeeder;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabaseState;
 use function Orchestra\Testbench\artisan;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
+    use DatabaseTransactions;
+
     protected $enablesPackageDiscoveries = true;
 
     protected function defineEnvironment($app)
@@ -30,6 +34,12 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     {
         DatabaseSeeder::$seedDemo = true;
 
-        artisan($this, 'igniter:up');
+        if (!RefreshDatabaseState::$migrated) {
+            artisan($this, 'igniter:up');
+
+            $this->refreshApplication();
+
+            RefreshDatabaseState::$migrated = true;
+        }
     }
 }
