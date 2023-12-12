@@ -21,8 +21,11 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function getPackageProviders($app)
     {
-        $app->afterResolving(ExtensionManager::class, function ($manager) {
+        $app->afterResolving(ExtensionManager::class, function (ExtensionManager $manager) {
             $manager->loadExtension(realpath($_SERVER['PWD']));
+            foreach (File::glob($_SERVER['PWD'].'/vendor/*/*/src/Extension.php') as $path) {
+                $manager->loadExtension(dirname($path, 2));
+            }
         });
 
         return [
