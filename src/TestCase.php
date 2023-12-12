@@ -6,6 +6,7 @@ use Igniter\System\Classes\ExtensionManager;
 use Igniter\System\Database\Seeds\DatabaseSeeder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
+use Illuminate\Support\Facades\File;
 use function Orchestra\Testbench\artisan;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
