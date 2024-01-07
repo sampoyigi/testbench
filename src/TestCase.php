@@ -39,6 +39,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         DatabaseSeeder::$seedDemo = true;
 
         if (!RefreshDatabaseState::$migrated) {
+            artisan($this, 'igniter:down');
             artisan($this, 'igniter:up');
 
             $this->refreshApplication();
