@@ -25,7 +25,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         $app->afterResolving(ExtensionManager::class, function (ExtensionManager $manager) {
             $manager->loadExtension(realpath($_SERVER['PWD']));
             foreach (File::glob($_SERVER['PWD'].'/vendor/*/*/src/Extension.php') as $path) {
-                $manager->loadExtension(dirname($path, 2));
+                rescue(fn() => $manager->loadExtension(dirname($path, 2)));
             }
         });
 
