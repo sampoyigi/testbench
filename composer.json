@@ -1,7 +1,7 @@
 {
   "name": "sampoyigi/testbench",
   "require": {
-    "orchestra/testbench": "^8.5"
+    "orchestra/testbench": "^9.0"
   },
   "autoload": {
     "psr-4": {
