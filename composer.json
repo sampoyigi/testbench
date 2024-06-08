@@ -1,11 +1,16 @@
 {
-	"name": "sampoyigi/testbench",
-	"require": {
-		"orchestra/testbench": "^8.5"
-	},
-	"autoload": {
-		"psr-4": {
-			"SamPoyigi\\Testbench\\": "src/"
-		}
-	}
+  "name": "sampoyigi/testbench",
+  "require": {
+    "orchestra/testbench": "^8.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "SamPoyigi\\Testbench\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.0.x-dev"
+    }
+  }
 }
