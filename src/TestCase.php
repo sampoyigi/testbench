@@ -2,6 +2,7 @@
 
 namespace SamPoyigi\Testbench;
 
+use Igniter\Main\Classes\ThemeManager;
 use Igniter\System\Classes\ExtensionManager;
 use Igniter\System\Database\Seeds\DatabaseSeeder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -30,6 +31,17 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
             foreach (File::glob($_SERVER['PWD'].'/vendor/*/*/src/Extension.php') as $path) {
                 rescue(fn() => $manager->loadExtension(dirname($path, 2)));
+            }
+        });
+
+        $app->afterResolving(ThemeManager::class, function(ThemeManager $manager) {
+            $currentPath = realpath($_SERVER['PWD']);
+            if (File::exists($currentPath.'/theme.php')) {
+                $manager->bootTheme($manager->loadTheme($currentPath));
+            }
+
+            foreach (File::glob($_SERVER['PWD'].'/vendor/*/*/theme.php') as $path) {
+                rescue(fn() => $manager->bootTheme($manager->loadTheme(dirname($path))));
             }
         });
 
