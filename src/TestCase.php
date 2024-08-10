@@ -2,6 +2,7 @@
 
 namespace SamPoyigi\Testbench;
 
+use Igniter\Flame\Exception\SystemException;
 use Igniter\Main\Classes\ThemeManager;
 use Igniter\System\Classes\ExtensionManager;
 use Igniter\System\Database\Seeds\DatabaseSeeder;
@@ -30,7 +31,11 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
             }
 
             foreach (File::glob($_SERVER['PWD'].'/vendor/*/*/src/Extension.php') as $path) {
-                rescue(fn() => $manager->loadExtension(dirname($path, 2)));
+                try {
+                    $manager->loadExtension(dirname($path));
+                } catch (SystemException) {
+                    // Do nothing
+                }
             }
         });
 
