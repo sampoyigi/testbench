@@ -32,7 +32,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
             foreach (File::glob($_SERVER['PWD'].'/vendor/*/*/src/Extension.php') as $path) {
                 try {
-                    $manager->loadExtension(dirname($path));
+                    $manager->loadExtension(dirname($path, 2));
                 } catch (SystemException) {
                     // Do nothing
                 }
