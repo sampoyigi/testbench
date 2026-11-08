@@ -15,7 +15,7 @@ class RectorConfig
         return \Rector\Config\RectorConfig::configure()
             ->withImportNames()
             ->withComposerBased(laravel: true)
-            ->withPhpSets()
+            ->withPhpSets(php85: true)
             ->withPreparedSets(
                 deadCode: true,
                 codeQuality: true,
