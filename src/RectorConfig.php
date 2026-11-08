@@ -10,17 +10,25 @@ use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNewArrayRector
 
 class RectorConfig
 {
-    public static function configure(): \Rector\Configuration\RectorConfigBuilder
+    public static function configure(
+        $php83 = false,
+        $php84 = false,
+        $php85 = true,
+        $deadCode = true,
+        $codeQuality = true,
+        $codingStyle = true,
+        $typeDeclarations = true,
+    ): \Rector\Configuration\RectorConfigBuilder
     {
         return \Rector\Config\RectorConfig::configure()
             ->withImportNames()
             ->withComposerBased(laravel: true)
-            ->withPhpSets(php85: true)
+            ->withPhpSets(php83: $php83, php84: $php84, php85: $php85)
             ->withPreparedSets(
-                deadCode: true,
-                codeQuality: true,
-                codingStyle: true,
-                typeDeclarations: true,
+                deadCode: $deadCode,
+                codeQuality: $codeQuality,
+                codingStyle: $codingStyle,
+                typeDeclarations: $typeDeclarations,
             )
             ->withSets([
                 PestSetList::CODING_STYLE,
