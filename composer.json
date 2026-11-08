@@ -2,9 +2,9 @@
   "name": "sampoyigi/testbench",
   "require": {
     "orchestra/testbench": "^11.0",
-    "pestphp/pest-plugin-laravel": "^5.0",
-    "pestphp/pest-plugin-phpstan": "^5.3",
-    "pestphp/pest-plugin-rector": "^5.0",
+    "pestphp/pest-plugin-laravel": "^4.0 || ^5.0",
+    "pestphp/pest-plugin-phpstan": "^4.0 || ^5.0",
+    "pestphp/pest-plugin-rector": "^4.0 || ^5.0",
     "rector/rector": "^2.8"
   },
   "autoload": {
