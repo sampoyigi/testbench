@@ -10,7 +10,7 @@ use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNewArrayRector
 
 class RectorConfig
 {
-    public static function configure(): \Rector\Config\RectorConfig
+    public static function configure(): \Rector\Configuration\RectorConfigBuilder
     {
         return \Rector\Config\RectorConfig::configure()
             ->withImportNames()
