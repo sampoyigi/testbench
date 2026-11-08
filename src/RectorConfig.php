@@ -11,9 +11,6 @@ use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNewArrayRector
 class RectorConfig
 {
     public static function configure(
-        $php83 = false,
-        $php84 = false,
-        $php85 = true,
         $deadCode = true,
         $codeQuality = true,
         $codingStyle = true,
@@ -23,7 +20,6 @@ class RectorConfig
         return \Rector\Config\RectorConfig::configure()
             ->withImportNames()
             ->withComposerBased(laravel: true)
-            ->withPhpSets(php83: $php83, php84: $php84, php85: $php85)
             ->withPreparedSets(
                 deadCode: $deadCode,
                 codeQuality: $codeQuality,
