@@ -1,7 +1,10 @@
 {
   "name": "sampoyigi/testbench",
   "require": {
-    "orchestra/testbench": "^9.0 | ^10.0"
+    "orchestra/testbench": "^11.0",
+    "pestphp/pest-plugin-laravel": "^5.0",
+    "pestphp/pest-plugin-rector": "^5.0",
+    "rector/rector": "^2.8"
   },
   "autoload": {
     "psr-4": {
@@ -12,5 +15,13 @@
     "branch-alias": {
       "dev-main": "1.0.x-dev"
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "require-dev": {
+    "pestphp/pest-plugin-phpstan": "^5.3"
   }
 }
